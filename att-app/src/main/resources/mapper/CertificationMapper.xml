@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.att.repository.mapper.CertificationMapper">
+  <resultMap id="BaseResultMap" type="com.att.repository.entity.Certification">
+    <result column="HANDLE" jdbcType="VARCHAR" property="handle" />
+    <result column="CHANGE_STAMP" jdbcType="DECIMAL" property="changeStamp" />
+    <result column="SITE" jdbcType="VARCHAR" property="site" />
+    <result column="CERTIFICATION" jdbcType="VARCHAR" property="certification" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="RENEWAL_DAYS" jdbcType="DECIMAL" property="renewalDays" />
+    <result column="WARNING_DAYS" jdbcType="DECIMAL" property="warningDays" />
+    <result column="WARNING_ALARM_BO" jdbcType="VARCHAR" property="warningAlarmBo" />
+    <result column="EXPIRATION_ALARM_BO" jdbcType="VARCHAR" property="expirationAlarmBo" />
+    <result column="CERTIFICATION_TYPE_BO" jdbcType="VARCHAR" property="certificationTypeBo" />
+    <result column="DURATION_TYPE" jdbcType="VARCHAR" property="durationType" />
+    <result column="DURATION" jdbcType="DECIMAL" property="duration" />
+    <result column="DURATION_UNITS" jdbcType="VARCHAR" property="durationUnits" />
+    <result column="STATUS_BO" jdbcType="VARCHAR" property="statusBo" />
+    <result column="NUM_OF_EXTENSIONS" jdbcType="DECIMAL" property="numOfExtensions" />
+    <result column="MAX_EXTENSION_DURATION" jdbcType="DECIMAL" property="maxExtensionDuration" />
+    <result column="EXTENSION_UNITS" jdbcType="VARCHAR" property="extensionUnits" />
+    <result column="CREATED_DATE_TIME" jdbcType="TIMESTAMP" property="createdDateTime" />
+    <result column="MODIFIED_DATE_TIME" jdbcType="TIMESTAMP" property="modifiedDateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    HANDLE, CHANGE_STAMP, SITE, CERTIFICATION, DESCRIPTION, RENEWAL_DAYS, WARNING_DAYS, 
+    WARNING_ALARM_BO, EXPIRATION_ALARM_BO, CERTIFICATION_TYPE_BO, DURATION_TYPE, DURATION, 
+    DURATION_UNITS, STATUS_BO, NUM_OF_EXTENSIONS, MAX_EXTENSION_DURATION, EXTENSION_UNITS, 
+    CREATED_DATE_TIME, MODIFIED_DATE_TIME
+  </sql>
+  <select id="selectByExample" parameterType="com.att.repository.entity.CertificationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CERTIFICATION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.att.repository.entity.CertificationExample">
+    delete from CERTIFICATION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.att.repository.entity.Certification">
+    insert into CERTIFICATION (HANDLE, CHANGE_STAMP, SITE, 
+      CERTIFICATION, DESCRIPTION, RENEWAL_DAYS, 
+      WARNING_DAYS, WARNING_ALARM_BO, EXPIRATION_ALARM_BO, 
+      CERTIFICATION_TYPE_BO, DURATION_TYPE, DURATION, 
+      DURATION_UNITS, STATUS_BO, NUM_OF_EXTENSIONS, 
+      MAX_EXTENSION_DURATION, EXTENSION_UNITS, 
+      CREATED_DATE_TIME, MODIFIED_DATE_TIME)
+    values (#{handle,jdbcType=VARCHAR}, #{changeStamp,jdbcType=DECIMAL}, #{site,jdbcType=VARCHAR},
+      #{certification,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{renewalDays,jdbcType=DECIMAL},
+      #{warningDays,jdbcType=DECIMAL}, #{warningAlarmBo,jdbcType=VARCHAR}, #{expirationAlarmBo,jdbcType=VARCHAR},
+      #{certificationTypeBo,jdbcType=VARCHAR}, #{durationType,jdbcType=VARCHAR}, #{duration,jdbcType=DECIMAL},
+      #{durationUnits,jdbcType=VARCHAR}, #{statusBo,jdbcType=VARCHAR}, #{numOfExtensions,jdbcType=DECIMAL},
+      #{maxExtensionDuration,jdbcType=DECIMAL}, #{extensionUnits,jdbcType=VARCHAR},
+      #{createdDateTime,jdbcType=TIMESTAMP}, #{modifiedDateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.att.repository.entity.Certification">
+    insert into CERTIFICATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="handle != null">
+        HANDLE,
+      </if>
+      <if test="changeStamp != null">
+        CHANGE_STAMP,
+      </if>
+      <if test="site != null">
+        SITE,
+      </if>
+      <if test="certification != null">
+        CERTIFICATION,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="renewalDays != null">
+        RENEWAL_DAYS,
+      </if>
+      <if test="warningDays != null">
+        WARNING_DAYS,
+      </if>
+      <if test="warningAlarmBo != null">
+        WARNING_ALARM_BO,
+      </if>
+      <if test="expirationAlarmBo != null">
+        EXPIRATION_ALARM_BO,
+      </if>
+      <if test="certificationTypeBo != null">
+        CERTIFICATION_TYPE_BO,
+      </if>
+      <if test="durationType != null">
+        DURATION_TYPE,
+      </if>
+      <if test="duration != null">
+        DURATION,
+      </if>
+      <if test="durationUnits != null">
+        DURATION_UNITS,
+      </if>
+      <if test="statusBo != null">
+        STATUS_BO,
+      </if>
+      <if test="numOfExtensions != null">
+        NUM_OF_EXTENSIONS,
+      </if>
+      <if test="maxExtensionDuration != null">
+        MAX_EXTENSION_DURATION,
+      </if>
+      <if test="extensionUnits != null">
+        EXTENSION_UNITS,
+      </if>
+      <if test="createdDateTime != null">
+        CREATED_DATE_TIME,
+      </if>
+      <if test="modifiedDateTime != null">
+        MODIFIED_DATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="handle != null">
+        #{handle,jdbcType=VARCHAR},
+      </if>
+      <if test="changeStamp != null">
+        #{changeStamp,jdbcType=DECIMAL},
+      </if>
+      <if test="site != null">
+        #{site,jdbcType=VARCHAR},
+      </if>
+      <if test="certification != null">
+        #{certification,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="renewalDays != null">
+        #{renewalDays,jdbcType=DECIMAL},
+      </if>
+      <if test="warningDays != null">
+        #{warningDays,jdbcType=DECIMAL},
+      </if>
+      <if test="warningAlarmBo != null">
+        #{warningAlarmBo,jdbcType=VARCHAR},
+      </if>
+      <if test="expirationAlarmBo != null">
+        #{expirationAlarmBo,jdbcType=VARCHAR},
+      </if>
+      <if test="certificationTypeBo != null">
+        #{certificationTypeBo,jdbcType=VARCHAR},
+      </if>
+      <if test="durationType != null">
+        #{durationType,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=DECIMAL},
+      </if>
+      <if test="durationUnits != null">
+        #{durationUnits,jdbcType=VARCHAR},
+      </if>
+      <if test="statusBo != null">
+        #{statusBo,jdbcType=VARCHAR},
+      </if>
+      <if test="numOfExtensions != null">
+        #{numOfExtensions,jdbcType=DECIMAL},
+      </if>
+      <if test="maxExtensionDuration != null">
+        #{maxExtensionDuration,jdbcType=DECIMAL},
+      </if>
+      <if test="extensionUnits != null">
+        #{extensionUnits,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDateTime != null">
+        #{createdDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDateTime != null">
+        #{modifiedDateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.att.repository.entity.CertificationExample" resultType="java.lang.Long">
+    select count(*) from CERTIFICATION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update CERTIFICATION
+    <set>
+      <if test="record.handle != null">
+        HANDLE = #{record.handle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.changeStamp != null">
+        CHANGE_STAMP = #{record.changeStamp,jdbcType=DECIMAL},
+      </if>
+      <if test="record.site != null">
+        SITE = #{record.site,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certification != null">
+        CERTIFICATION = #{record.certification,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null">
+        DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.renewalDays != null">
+        RENEWAL_DAYS = #{record.renewalDays,jdbcType=DECIMAL},
+      </if>
+      <if test="record.warningDays != null">
+        WARNING_DAYS = #{record.warningDays,jdbcType=DECIMAL},
+      </if>
+      <if test="record.warningAlarmBo != null">
+        WARNING_ALARM_BO = #{record.warningAlarmBo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.expirationAlarmBo != null">
+        EXPIRATION_ALARM_BO = #{record.expirationAlarmBo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificationTypeBo != null">
+        CERTIFICATION_TYPE_BO = #{record.certificationTypeBo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.durationType != null">
+        DURATION_TYPE = #{record.durationType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duration != null">
+        DURATION = #{record.duration,jdbcType=DECIMAL},
+      </if>
+      <if test="record.durationUnits != null">
+        DURATION_UNITS = #{record.durationUnits,jdbcType=VARCHAR},
+      </if>
+      <if test="record.statusBo != null">
+        STATUS_BO = #{record.statusBo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.numOfExtensions != null">
+        NUM_OF_EXTENSIONS = #{record.numOfExtensions,jdbcType=DECIMAL},
+      </if>
+      <if test="record.maxExtensionDuration != null">
+        MAX_EXTENSION_DURATION = #{record.maxExtensionDuration,jdbcType=DECIMAL},
+      </if>
+      <if test="record.extensionUnits != null">
+        EXTENSION_UNITS = #{record.extensionUnits,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdDateTime != null">
+        CREATED_DATE_TIME = #{record.createdDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifiedDateTime != null">
+        MODIFIED_DATE_TIME = #{record.modifiedDateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update CERTIFICATION
+    set HANDLE = #{record.handle,jdbcType=VARCHAR},
+      CHANGE_STAMP = #{record.changeStamp,jdbcType=DECIMAL},
+      SITE = #{record.site,jdbcType=VARCHAR},
+      CERTIFICATION = #{record.certification,jdbcType=VARCHAR},
+      DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      RENEWAL_DAYS = #{record.renewalDays,jdbcType=DECIMAL},
+      WARNING_DAYS = #{record.warningDays,jdbcType=DECIMAL},
+      WARNING_ALARM_BO = #{record.warningAlarmBo,jdbcType=VARCHAR},
+      EXPIRATION_ALARM_BO = #{record.expirationAlarmBo,jdbcType=VARCHAR},
+      CERTIFICATION_TYPE_BO = #{record.certificationTypeBo,jdbcType=VARCHAR},
+      DURATION_TYPE = #{record.durationType,jdbcType=VARCHAR},
+      DURATION = #{record.duration,jdbcType=DECIMAL},
+      DURATION_UNITS = #{record.durationUnits,jdbcType=VARCHAR},
+      STATUS_BO = #{record.statusBo,jdbcType=VARCHAR},
+      NUM_OF_EXTENSIONS = #{record.numOfExtensions,jdbcType=DECIMAL},
+      MAX_EXTENSION_DURATION = #{record.maxExtensionDuration,jdbcType=DECIMAL},
+      EXTENSION_UNITS = #{record.extensionUnits,jdbcType=VARCHAR},
+      CREATED_DATE_TIME = #{record.createdDateTime,jdbcType=TIMESTAMP},
+      MODIFIED_DATE_TIME = #{record.modifiedDateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
