@@ -160,6 +160,11 @@
                     "target": "certest"
                 },
                 {
+                    "name": "attdps",
+                    "pattern": "attdps:?req:",
+                    "target": "attdps"
+                },
+                {
                     "name": "equipmentKanban",
                     "pattern": "equipmentKanban:?req:",
                     "target": "equipmentKanban"
@@ -230,6 +235,9 @@
                 },
                 "certest": {
                     "viewName": "view.certest.certest"
+                },
+                "attdps": {
+                    "viewName": "view.attdps.attdps"
                 },
                 "equipmentKanban": {
                     "viewName": "view.equipmentKanban.equipmentKanban",

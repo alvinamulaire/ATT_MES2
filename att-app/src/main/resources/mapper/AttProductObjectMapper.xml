@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.att.repository.mapper.AttProductObjectMapper">
+  <resultMap id="BaseResultMap" type="com.att.repository.entity.AttProductObject">
+    <result column="SITE" jdbcType="VARCHAR" property="site" />
+    <result column="ITEM_BO" jdbcType="VARCHAR" property="itemBo" />
+    <result column="OPERATION_BO" jdbcType="VARCHAR" property="operationBo" />
+    <result column="DPS_OBJECT" jdbcType="DECIMAL" property="dpsObject" />
+    <result column="MPS_OBJECT" jdbcType="DECIMAL" property="mpsObject" />
+    <result column="CREATED_DATE_TIME" jdbcType="TIMESTAMP" property="createdDateTime" />
+    <result column="MODIFIED_DATE_TIME" jdbcType="TIMESTAMP" property="modifiedDateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    SITE, ITEM_BO, OPERATION_BO, DPS_OBJECT, MPS_OBJECT, CREATED_DATE_TIME, MODIFIED_DATE_TIME
+  </sql>
+  <select id="selectByExample" parameterType="com.att.repository.entity.AttProductObjectExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ATT_PRODUCT_OBJECT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.att.repository.entity.AttProductObjectExample">
+    delete from ATT_PRODUCT_OBJECT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.att.repository.entity.AttProductObject">
+    insert into ATT_PRODUCT_OBJECT (SITE, ITEM_BO, OPERATION_BO, 
+      DPS_OBJECT, MPS_OBJECT, CREATED_DATE_TIME, 
+      MODIFIED_DATE_TIME)
+    values (#{site,jdbcType=VARCHAR}, #{itemBo,jdbcType=VARCHAR}, #{operationBo,jdbcType=VARCHAR},
+      #{dpsObject,jdbcType=DECIMAL}, #{mpsObject,jdbcType=DECIMAL}, #{createdDateTime,jdbcType=TIMESTAMP}, 
+      #{modifiedDateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.att.repository.entity.AttProductObject">
+    insert into ATT_PRODUCT_OBJECT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="site != null">
+        SITE,
+      </if>
+      <if test="itemBo != null">
+        ITEM_BO,
+      </if>
+      <if test="operationBo != null">
+        OPERATION_BO,
+      </if>
+      <if test="dpsObject != null">
+        DPS_OBJECT,
+      </if>
+      <if test="mpsObject != null">
+        MPS_OBJECT,
+      </if>
+      <if test="createdDateTime != null">
+        CREATED_DATE_TIME,
+      </if>
+      <if test="modifiedDateTime != null">
+        MODIFIED_DATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="site != null">
+        #{site,jdbcType=VARCHAR},
+      </if>
+      <if test="itemBo != null">
+        #{itemBo,jdbcType=VARCHAR},
+      </if>
+      <if test="operationBo != null">
+        #{operationBo,jdbcType=VARCHAR},
+      </if>
+      <if test="dpsObject != null">
+        #{dpsObject,jdbcType=DECIMAL},
+      </if>
+      <if test="mpsObject != null">
+        #{mpsObject,jdbcType=DECIMAL},
+      </if>
+      <if test="createdDateTime != null">
+        #{createdDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedDateTime != null">
+        #{modifiedDateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.att.repository.entity.AttProductObjectExample" resultType="java.lang.Long">
+    select count(*) from ATT_PRODUCT_OBJECT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ATT_PRODUCT_OBJECT
+    <set>
+      <if test="record.site != null">
+        SITE = #{record.site,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemBo != null">
+        ITEM_BO = #{record.itemBo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operationBo != null">
+        OPERATION_BO = #{record.operationBo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpsObject != null">
+        DPS_OBJECT = #{record.dpsObject,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mpsObject != null">
+        MPS_OBJECT = #{record.mpsObject,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createdDateTime != null">
+        CREATED_DATE_TIME = #{record.createdDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifiedDateTime != null">
+        MODIFIED_DATE_TIME = #{record.modifiedDateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ATT_PRODUCT_OBJECT
+    set SITE = #{record.site,jdbcType=VARCHAR},
+      ITEM_BO = #{record.itemBo,jdbcType=VARCHAR},
+      OPERATION_BO = #{record.operationBo,jdbcType=VARCHAR},
+      DPS_OBJECT = #{record.dpsObject,jdbcType=DECIMAL},
+      MPS_OBJECT = #{record.mpsObject,jdbcType=DECIMAL},
+      CREATED_DATE_TIME = #{record.createdDateTime,jdbcType=TIMESTAMP},
+      MODIFIED_DATE_TIME = #{record.modifiedDateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

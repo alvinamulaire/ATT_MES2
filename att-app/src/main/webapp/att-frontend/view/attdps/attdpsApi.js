@@ -1,5 +1,5 @@
 (function (global, factory) {
-  global.$certest = factory();
+  global.$attdps = factory();
 })(this, function () {
   'use strict';
 
@@ -7,12 +7,12 @@
 
     // 檢索
    let searchLists = function (data, success, fail) {
-     api.post(`/certification/info`, data, 'json', success, fail);
+     api.post(`/attdps/info`, data, 'json', success, fail);
    };
 
   // 匯入
   let uploadExcel = function (data, success, fail) {
-    api.post(`/certification/import`, data, 'html', success, fail);
+    api.post(`/attdps/import`, data, 'html', success, fail);
   };
 
   return {

@@ -3,7 +3,7 @@ sap.ui.define(
     "fw/core/BaseController",
     "fw/fragment/TableSelectDialog",
     "sap/ui/unified/MenuItem",
-    "att/view/certest/certestApi",
+    "att/view/attdps/attdpsApi",
   ],
   function (BaseController, TableSelectDialog, MenuItem) {
     "use strict";
@@ -11,16 +11,17 @@ sap.ui.define(
     /**
      * BaseController不在個別的專案各自維護，統一維護在FW
      */
-    return BaseController.extend("att.view.certest.certest", {
+    return BaseController.extend("att.view.attdps.attdps", {
       onInit: function () {
-        this.attachPatternMatched("certest", this.onRouteMatched);
+        this.attachPatternMatched("attdps", this.onRouteMatched);
       },
       onRouteMatched: function () {
         this.setModel({
           site: this.getSite(),
-          item: "",
-          certification:"",
-          description:"",
+          itemBo: "",
+          operationBo:"",
+          dpsObject:"",
+          mpsObject:"",
           filter: ""
         });
 
@@ -40,7 +41,7 @@ sap.ui.define(
               let i18n = this.getI18N()
               let oTable = this.byId("table")
 
-             $certest.searchLists({
+             $attdps.searchLists({
                   site: oData.site
                 },
                   function (data) {
@@ -80,7 +81,7 @@ sap.ui.define(
               .load(data)
               .then(function () {
                 // 取得 sheet
-                let worksheet = workbook.getWorksheet('CERTIFICATION');
+                let worksheet = workbook.getWorksheet('CONFIGDPS');
                 if (!worksheet) {
                   me.error('att.yieldMaintain.warning4');
                 }
@@ -94,8 +95,10 @@ sap.ui.define(
                       // 判斷值是否為數字
                         oData.excelData.push(
                           {
-                            certification: row.values[1],
-                            description: row.values[2]
+                            itemBo: row.values[1],
+                            operationBo: row.values[2],
+                            dpsObject: row.values[3],
+                            mpsObject: row.values[4]
                           }
                         )
                     }
@@ -103,7 +106,7 @@ sap.ui.define(
                 )
 
                 // 上傳系統
-                $certest.uploadExcel({
+                $attdps.uploadExcel({
                   site: oData.site,
                   detailInfoList: oData.excelData
                 },

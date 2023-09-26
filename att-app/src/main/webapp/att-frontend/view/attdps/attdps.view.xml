@@ -1,4 +1,4 @@
-<mvc:View controllerName="att.view.certest.certest"
+<mvc:View controllerName="att.view.attdps.attdps"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
@@ -21,12 +21,12 @@
 				<contentLeft>
 					<Button text="{i18n>g.search}" icon="sap-icon://open-folder" press="search" />
 <!--					<Button text="{i18n>g.clear}" icon="sap-icon://eraser" press="clear" />-->
-					<u:FileUploader id="uploadExcel" icon="sap-icon://document" change="uploadExcel" sameFilenameAllowed="true" buttonOnly="true" buttonText="{i18n>att.cer.label1}" fileType="XLSX,xlsx" />
-					<Button id="exportExcel" text="{i18n>att.cer.label2}" icon="sap-icon://action" press="exportExcel" />
+					<u:FileUploader id="uploadExcel" icon="sap-icon://document" change="uploadExcel" sameFilenameAllowed="true" buttonOnly="true" buttonText="{i18n>att.dps.label1}" fileType="XLSX,xlsx" />
+					<Button id="exportExcel" text="{i18n>att.dps.label6}" icon="sap-icon://action" press="exportExcel" />
 				</contentLeft>
 				<!-- 標題 -->
 				<contentMiddle>
-					<Title text="{i18n>att.cer.label3}"/>
+					<Title text="{i18n>att.dps.label7}"/>
 				</contentMiddle>
 			</Bar>
 		</customHeader>
@@ -39,6 +39,11 @@
 						<Label text="{i18n>g.site}" class="set-required myLabel flex20" />
 						<Text text="{/site}" class="myText" />
 					</FlexBox>
+					<!-- 物料 -->
+					<FlexBox alignItems="Center" width="50%" renderType="Bare">
+						<Label text="{i18n>g.material}" class="set-required myLabel flex20" />
+						<Input id="item" width="30%" value="{/item}" liveChange="checkItem" showValueHelp="true" valueHelpRequest="openDialog" cd:title="g.material" cd:filterKey="item" cd:callBackKey="item" cd:columns="item|g.material;description|att.yieldMaintain.label10" cd:root="/" />
+					</FlexBox>
 				</VBox>
 <!--				&lt;!&ndash; 表格資訊 &ndash;&gt;-->
 				<FlexBox width="100%" class="col-12 sapUiSmallMarginTop" renderType="Bare">
@@ -46,16 +51,30 @@
 					<t:Table id="table" width="30%" rows="{/tableInfo}" selectionMode="None" class="sapUiTinyMarginTop" enableGrouping="true">
 
 						<t:columns>
-							<!-- 途程 -->
+							<!-- 物料編號 -->
 							<t:Column hAlign="Center" width="8%" id="TableRouting" sortProperty="router" filterProperty="router">
-								<Label class="mycolums" text="{i18n>att.cer.label6}" />
+								<Label class="mycolums" text="{i18n>att.dps.label2}" />
 								<t:template>
 									<Text text="{certification}" />
 								</t:template>
 							</t:Column>
-							<!-- 途程版本 -->
+							<!-- 作業站點 -->
 							<t:Column hAlign="Center" width="8%">
-								<Label class="mycolums" text="{i18n>att.cer.label7}" />
+								<Label class="mycolums" text="{i18n>att.dps.label3}" />
+								<t:template>
+									<Text text="{description}" />
+								</t:template>
+							</t:Column>
+							<!-- DPS目標 -->
+							<t:Column hAlign="Center" width="8%">
+								<Label class="mycolums" text="{i18n>att.dps.label4}" />
+								<t:template>
+									<Text text="{description}" />
+								</t:template>
+							</t:Column>
+							<!-- MPS目標 -->
+							<t:Column hAlign="Center" width="8%">
+								<Label class="mycolums" text="{i18n>att.dps.label5}" />
 								<t:template>
 									<Text text="{description}" />
 								</t:template>

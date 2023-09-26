@@ -273,7 +273,7 @@ sap.ui.define(
                 // 上傳系統
                 $yieldMaintain.uploadExcel({
                   site: oData.site,
-                  item: oData.item
+                  item: oData.item,
                   detailInfoList: oData.excelData
                 },
                   function () {

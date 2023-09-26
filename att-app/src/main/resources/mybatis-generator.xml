@@ -40,7 +40,7 @@
                              type="XMLMAPPER"></javaClientGenerator>
 
         <!-- table -->
-       <table tableName="CERTIFICATION">
+       <table tableName="ATT_PRODUCT_OBJECT">
            <property name="modelOnly" value="false"/>
        </table>
 
