@@ -40,16 +40,16 @@
                              type="XMLMAPPER"></javaClientGenerator>
 
         <!-- table -->
-       <table tableName="ATT_PRODUCT_OBJECT">
-           <property name="modelOnly" value="false"/>
-       </table>
+<!--       <table tableName="ATT_PRODUCT_OBJECT">-->
+<!--           <property name="modelOnly" value="false"/>-->
+<!--       </table>-->
 
         <!-- !!! gen view 請使用下列這個，不產生 insert update delete 語句 !!! -->
-        <!--  <table tableName="Z_VW_KANBAN_ATTRIBUTE_WORK_CENTER"
+        <table tableName="ATT_DPS_ITEM_DESC"
                  enableUpdateByExample="false" enableDeleteByExample="false"
                  enableInsert="false">
               <property name="modelOnly" value="false"/>
-          </table>-->
+          </table>
 
      </context>
 

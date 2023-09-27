@@ -3,6 +3,7 @@ package com.att.service.impl;
 
 import com.att.domain.attdomain.AttdpsInfo;
 import com.att.repository.AttDpsRepository;
+import com.att.repository.entity.AttDpsItemDesc;
 import com.att.repository.entity.AttProductObject;
 import com.att.service.AttDpsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class AttDpsServiceImpl implements AttDpsService {
     @Autowired
     private AttDpsRepository attDpsRepository;
 
+
 //    @Override
 //    public List<Certification> getCerInfo(Certification certification) {
 //        String site = certification.getSite();
@@ -27,6 +29,11 @@ public class AttDpsServiceImpl implements AttDpsService {
 //        List<Certification> list = certificationRepository.getCerInfo(certification1);
 //        return  list;
 //    }
+
+    @Override
+    public List<AttDpsItemDesc> getMaterialDesc(String site, String item, String locale) {
+        return attDpsRepository.getMaterialDesc(site,item,locale);
+    }
 
     @Override
     public void importattdps( AttdpsInfo attdpsInfo) {

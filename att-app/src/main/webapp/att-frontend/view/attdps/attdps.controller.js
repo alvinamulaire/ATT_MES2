@@ -18,6 +18,7 @@ sap.ui.define(
       onRouteMatched: function () {
         this.setModel({
           site: this.getSite(),
+          item:"",
           itemBo: "",
           operationBo:"",
           dpsObject:"",
@@ -34,6 +35,29 @@ sap.ui.define(
           cols[1].setWidth("8%")
         }
       },
+            // 開窗
+      openDialog: function (oEvent) {
+         let me = this;
+         let oSource = oEvent.getSource();
+         let id = oSource.sId.split("__xmlview1--")[1];
+         let oData = this.getData();
+         let i18n = this.getI18N()
+
+         switch (id) {
+                // 物料
+                case "item":
+                  $attdps.getItem(
+                    oData,
+                    function (data) {
+                      new TableSelectDialog().open(oSource, data, function (data) {
+                        oData.item = data.item
+                      });
+                    },
+                    me.showMessage
+                  )
+                  break;
+              }
+            },
          // 檢索
             search: function () {
               let me = this;
