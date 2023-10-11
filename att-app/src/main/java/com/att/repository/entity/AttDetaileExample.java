@@ -2,17 +2,16 @@ package com.att.repository.entity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class AttProductObjectExample {
+public class AttDetaileExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public AttProductObjectExample() {
+    public AttDetaileExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -176,383 +175,263 @@ public class AttProductObjectExample {
             return (Criteria) this;
         }
 
-        public Criteria andItemBoIsNull() {
-            addCriterion("ITEM_BO is null");
+        public Criteria andItemIsNull() {
+            addCriterion("ITEM is null");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoIsNotNull() {
-            addCriterion("ITEM_BO is not null");
+        public Criteria andItemIsNotNull() {
+            addCriterion("ITEM is not null");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoEqualTo(String value) {
-            addCriterion("ITEM_BO =", value, "itemBo");
+        public Criteria andItemEqualTo(String value) {
+            addCriterion("ITEM =", value, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoNotEqualTo(String value) {
-            addCriterion("ITEM_BO <>", value, "itemBo");
+        public Criteria andItemNotEqualTo(String value) {
+            addCriterion("ITEM <>", value, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoGreaterThan(String value) {
-            addCriterion("ITEM_BO >", value, "itemBo");
+        public Criteria andItemGreaterThan(String value) {
+            addCriterion("ITEM >", value, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoGreaterThanOrEqualTo(String value) {
-            addCriterion("ITEM_BO >=", value, "itemBo");
+        public Criteria andItemGreaterThanOrEqualTo(String value) {
+            addCriterion("ITEM >=", value, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoLessThan(String value) {
-            addCriterion("ITEM_BO <", value, "itemBo");
+        public Criteria andItemLessThan(String value) {
+            addCriterion("ITEM <", value, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoLessThanOrEqualTo(String value) {
-            addCriterion("ITEM_BO <=", value, "itemBo");
+        public Criteria andItemLessThanOrEqualTo(String value) {
+            addCriterion("ITEM <=", value, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoLike(String value) {
-            addCriterion("ITEM_BO like", value, "itemBo");
+        public Criteria andItemLike(String value) {
+            addCriterion("ITEM like", value, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoNotLike(String value) {
-            addCriterion("ITEM_BO not like", value, "itemBo");
+        public Criteria andItemNotLike(String value) {
+            addCriterion("ITEM not like", value, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoIn(List<String> values) {
-            addCriterion("ITEM_BO in", values, "itemBo");
+        public Criteria andItemIn(List<String> values) {
+            addCriterion("ITEM in", values, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoNotIn(List<String> values) {
-            addCriterion("ITEM_BO not in", values, "itemBo");
+        public Criteria andItemNotIn(List<String> values) {
+            addCriterion("ITEM not in", values, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoBetween(String value1, String value2) {
-            addCriterion("ITEM_BO between", value1, value2, "itemBo");
+        public Criteria andItemBetween(String value1, String value2) {
+            addCriterion("ITEM between", value1, value2, "item");
             return (Criteria) this;
         }
 
-        public Criteria andItemBoNotBetween(String value1, String value2) {
-            addCriterion("ITEM_BO not between", value1, value2, "itemBo");
+        public Criteria andItemNotBetween(String value1, String value2) {
+            addCriterion("ITEM not between", value1, value2, "item");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoIsNull() {
-            addCriterion("OPERATION_BO is null");
+        public Criteria andOperationIsNull() {
+            addCriterion("OPERATION is null");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoIsNotNull() {
-            addCriterion("OPERATION_BO is not null");
+        public Criteria andOperationIsNotNull() {
+            addCriterion("OPERATION is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoEqualTo(String value) {
-            addCriterion("OPERATION_BO =", value, "operationBo");
+        public Criteria andOperationEqualTo(String value) {
+            addCriterion("OPERATION =", value, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoNotEqualTo(String value) {
-            addCriterion("OPERATION_BO <>", value, "operationBo");
+        public Criteria andOperationNotEqualTo(String value) {
+            addCriterion("OPERATION <>", value, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoGreaterThan(String value) {
-            addCriterion("OPERATION_BO >", value, "operationBo");
+        public Criteria andOperationGreaterThan(String value) {
+            addCriterion("OPERATION >", value, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoGreaterThanOrEqualTo(String value) {
-            addCriterion("OPERATION_BO >=", value, "operationBo");
+        public Criteria andOperationGreaterThanOrEqualTo(String value) {
+            addCriterion("OPERATION >=", value, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoLessThan(String value) {
-            addCriterion("OPERATION_BO <", value, "operationBo");
+        public Criteria andOperationLessThan(String value) {
+            addCriterion("OPERATION <", value, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoLessThanOrEqualTo(String value) {
-            addCriterion("OPERATION_BO <=", value, "operationBo");
+        public Criteria andOperationLessThanOrEqualTo(String value) {
+            addCriterion("OPERATION <=", value, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoLike(String value) {
-            addCriterion("OPERATION_BO like", value, "operationBo");
+        public Criteria andOperationLike(String value) {
+            addCriterion("OPERATION like", value, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoNotLike(String value) {
-            addCriterion("OPERATION_BO not like", value, "operationBo");
+        public Criteria andOperationNotLike(String value) {
+            addCriterion("OPERATION not like", value, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoIn(List<String> values) {
-            addCriterion("OPERATION_BO in", values, "operationBo");
+        public Criteria andOperationIn(List<String> values) {
+            addCriterion("OPERATION in", values, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoNotIn(List<String> values) {
-            addCriterion("OPERATION_BO not in", values, "operationBo");
+        public Criteria andOperationNotIn(List<String> values) {
+            addCriterion("OPERATION not in", values, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoBetween(String value1, String value2) {
-            addCriterion("OPERATION_BO between", value1, value2, "operationBo");
+        public Criteria andOperationBetween(String value1, String value2) {
+            addCriterion("OPERATION between", value1, value2, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andOperationBoNotBetween(String value1, String value2) {
-            addCriterion("OPERATION_BO not between", value1, value2, "operationBo");
+        public Criteria andOperationNotBetween(String value1, String value2) {
+            addCriterion("OPERATION not between", value1, value2, "operation");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectIsNull() {
-            addCriterion("DPS_OBJECT is null");
+        public Criteria andDpsobjectIsNull() {
+            addCriterion("DPSOBJECT is null");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectIsNotNull() {
-            addCriterion("DPS_OBJECT is not null");
+        public Criteria andDpsobjectIsNotNull() {
+            addCriterion("DPSOBJECT is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectEqualTo(BigDecimal value) {
-            addCriterion("DPS_OBJECT =", value, "dpsObject");
+        public Criteria andDpsobjectEqualTo(BigDecimal value) {
+            addCriterion("DPSOBJECT =", value, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectNotEqualTo(BigDecimal value) {
-            addCriterion("DPS_OBJECT <>", value, "dpsObject");
+        public Criteria andDpsobjectNotEqualTo(BigDecimal value) {
+            addCriterion("DPSOBJECT <>", value, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectGreaterThan(BigDecimal value) {
-            addCriterion("DPS_OBJECT >", value, "dpsObject");
+        public Criteria andDpsobjectGreaterThan(BigDecimal value) {
+            addCriterion("DPSOBJECT >", value, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("DPS_OBJECT >=", value, "dpsObject");
+        public Criteria andDpsobjectGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("DPSOBJECT >=", value, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectLessThan(BigDecimal value) {
-            addCriterion("DPS_OBJECT <", value, "dpsObject");
+        public Criteria andDpsobjectLessThan(BigDecimal value) {
+            addCriterion("DPSOBJECT <", value, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("DPS_OBJECT <=", value, "dpsObject");
+        public Criteria andDpsobjectLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("DPSOBJECT <=", value, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectIn(List<BigDecimal> values) {
-            addCriterion("DPS_OBJECT in", values, "dpsObject");
+        public Criteria andDpsobjectIn(List<BigDecimal> values) {
+            addCriterion("DPSOBJECT in", values, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectNotIn(List<BigDecimal> values) {
-            addCriterion("DPS_OBJECT not in", values, "dpsObject");
+        public Criteria andDpsobjectNotIn(List<BigDecimal> values) {
+            addCriterion("DPSOBJECT not in", values, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("DPS_OBJECT between", value1, value2, "dpsObject");
+        public Criteria andDpsobjectBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("DPSOBJECT between", value1, value2, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andDpsObjectNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("DPS_OBJECT not between", value1, value2, "dpsObject");
+        public Criteria andDpsobjectNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("DPSOBJECT not between", value1, value2, "dpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectIsNull() {
-            addCriterion("MPS_OBJECT is null");
+        public Criteria andMpsobjectIsNull() {
+            addCriterion("MPSOBJECT is null");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectIsNotNull() {
-            addCriterion("MPS_OBJECT is not null");
+        public Criteria andMpsobjectIsNotNull() {
+            addCriterion("MPSOBJECT is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectEqualTo(BigDecimal value) {
-            addCriterion("MPS_OBJECT =", value, "mpsObject");
+        public Criteria andMpsobjectEqualTo(BigDecimal value) {
+            addCriterion("MPSOBJECT =", value, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectNotEqualTo(BigDecimal value) {
-            addCriterion("MPS_OBJECT <>", value, "mpsObject");
+        public Criteria andMpsobjectNotEqualTo(BigDecimal value) {
+            addCriterion("MPSOBJECT <>", value, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectGreaterThan(BigDecimal value) {
-            addCriterion("MPS_OBJECT >", value, "mpsObject");
+        public Criteria andMpsobjectGreaterThan(BigDecimal value) {
+            addCriterion("MPSOBJECT >", value, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("MPS_OBJECT >=", value, "mpsObject");
+        public Criteria andMpsobjectGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("MPSOBJECT >=", value, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectLessThan(BigDecimal value) {
-            addCriterion("MPS_OBJECT <", value, "mpsObject");
+        public Criteria andMpsobjectLessThan(BigDecimal value) {
+            addCriterion("MPSOBJECT <", value, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("MPS_OBJECT <=", value, "mpsObject");
+        public Criteria andMpsobjectLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("MPSOBJECT <=", value, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectIn(List<BigDecimal> values) {
-            addCriterion("MPS_OBJECT in", values, "mpsObject");
+        public Criteria andMpsobjectIn(List<BigDecimal> values) {
+            addCriterion("MPSOBJECT in", values, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectNotIn(List<BigDecimal> values) {
-            addCriterion("MPS_OBJECT not in", values, "mpsObject");
+        public Criteria andMpsobjectNotIn(List<BigDecimal> values) {
+            addCriterion("MPSOBJECT not in", values, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("MPS_OBJECT between", value1, value2, "mpsObject");
+        public Criteria andMpsobjectBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("MPSOBJECT between", value1, value2, "mpsobject");
             return (Criteria) this;
         }
 
-        public Criteria andMpsObjectNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("MPS_OBJECT not between", value1, value2, "mpsObject");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeIsNull() {
-            addCriterion("CREATED_DATE_TIME is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeIsNotNull() {
-            addCriterion("CREATED_DATE_TIME is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeEqualTo(Date value) {
-            addCriterion("CREATED_DATE_TIME =", value, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeNotEqualTo(Date value) {
-            addCriterion("CREATED_DATE_TIME <>", value, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeGreaterThan(Date value) {
-            addCriterion("CREATED_DATE_TIME >", value, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("CREATED_DATE_TIME >=", value, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeLessThan(Date value) {
-            addCriterion("CREATED_DATE_TIME <", value, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("CREATED_DATE_TIME <=", value, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeIn(List<Date> values) {
-            addCriterion("CREATED_DATE_TIME in", values, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeNotIn(List<Date> values) {
-            addCriterion("CREATED_DATE_TIME not in", values, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeBetween(Date value1, Date value2) {
-            addCriterion("CREATED_DATE_TIME between", value1, value2, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andCreatedDateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("CREATED_DATE_TIME not between", value1, value2, "createdDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeIsNull() {
-            addCriterion("MODIFIED_DATE_TIME is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeIsNotNull() {
-            addCriterion("MODIFIED_DATE_TIME is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeEqualTo(Date value) {
-            addCriterion("MODIFIED_DATE_TIME =", value, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeNotEqualTo(Date value) {
-            addCriterion("MODIFIED_DATE_TIME <>", value, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeGreaterThan(Date value) {
-            addCriterion("MODIFIED_DATE_TIME >", value, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("MODIFIED_DATE_TIME >=", value, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeLessThan(Date value) {
-            addCriterion("MODIFIED_DATE_TIME <", value, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("MODIFIED_DATE_TIME <=", value, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeIn(List<Date> values) {
-            addCriterion("MODIFIED_DATE_TIME in", values, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeNotIn(List<Date> values) {
-            addCriterion("MODIFIED_DATE_TIME not in", values, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeBetween(Date value1, Date value2) {
-            addCriterion("MODIFIED_DATE_TIME between", value1, value2, "modifiedDateTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andModifiedDateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("MODIFIED_DATE_TIME not between", value1, value2, "modifiedDateTime");
+        public Criteria andMpsobjectNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("MPSOBJECT not between", value1, value2, "mpsobject");
             return (Criteria) this;
         }
 

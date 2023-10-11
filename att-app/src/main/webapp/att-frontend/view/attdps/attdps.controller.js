@@ -23,6 +23,8 @@ sap.ui.define(
           operationBo:"",
           dpsObject:"",
           mpsObject:"",
+          productDay:"",
+          startDate: moment().subtract(6, 'days').format('YYYY/MM/DD'),
           filter: ""
         });
 
@@ -64,9 +66,13 @@ sap.ui.define(
               let oData = this.getData();
               let i18n = this.getI18N()
               let oTable = this.byId("table")
-
+            if (!oData.item) {
+                    this.error(i18n.getText("att.dps.warning1"))
+                 } else{
              $attdps.searchLists({
-                  site: oData.site
+                  site: oData.site,
+                  item: oData.item,
+                  productDay: oData.productDay
                 },
                   function (data) {
 
@@ -80,7 +86,7 @@ sap.ui.define(
                   },
                   me.showMessage
                 )
-
+               }
             },
       // 匯入 excel
       uploadExcel: function (oEvent) {
@@ -110,24 +116,58 @@ sap.ui.define(
                   me.error('att.yieldMaintain.warning4');
                 }
 
+
+                 worksheet.eachRow({
+                   includeEmpty: true
+                   },
+                     function (row, rowNumber) {
+                        if (rowNumber > 2) {
+                              // 判斷值是否為數字
+                              let pDay = worksheet.getRow(1)
+                              for(let i=3 ;i<=60;i=i+2){
+                                let n=0
+                                if(!pDay.values[i]){
+                                    break;
+                                }else
+                                  {
+
+                                    oData.excelData.push(
+                                            {
+                                               itemBo: row.values[1],
+                                               operationBo: row.values[2],
+                                               dpsObject: row.values[3+n],
+                                               mpsObject: row.values[4+n],
+                                               productDay: pDay.values[i]
+                                            }
+                                      )
+                                  }
+                                  n =n+2
+                                     }
+                                    }
+                                  }
+                                )
+
+
                 // 取得每一列資料
-                worksheet.eachRow({
-                  includeEmpty: true
-                },
-                  function (row, rowNumber) {
-                    if (rowNumber > 1) {
-                      // 判斷值是否為數字
-                        oData.excelData.push(
-                          {
-                            itemBo: row.values[1],
-                            operationBo: row.values[2],
-                            dpsObject: row.values[3],
-                            mpsObject: row.values[4]
-                          }
-                        )
-                    }
-                  }
-                )
+//                worksheet.eachRow({
+//                  includeEmpty: true
+//                },
+//                  function (row, rowNumber) {
+//                    if (rowNumber > 1) {
+//                      // 判斷值是否為數字
+//                        oData.excelData.push(
+//                          {
+//                            itemBo: row.values[1],
+//                            operationBo: row.values[2],
+//                            dpsObject: row.values[3],
+//                            mpsObject: row.values[4],
+//                            productDay: row.values[5]
+//
+//                          }
+//                        )
+//                    }
+//                  }
+//                )
 
                 // 上傳系統
                 $attdps.uploadExcel({
@@ -204,33 +244,49 @@ sap.ui.define(
         // 建立 excel 物件
         let wb = new ExcelJS.Workbook();
         // 新增工作表
-        let ws = wb.addWorksheet(i18n.getText('CERTIFICATION'), {
+        let ws = wb.addWorksheet(i18n.getText('CONFIGDPS'), {
           // 不顯示網格
           views: [{ showGridLines: false }],
           // 預設寬度
           properties: { defaultColWidth: 23 }
         });
         // 合併儲存格標題
-//        ws.mergeCells('B1:E1');
+         ws.mergeCells('A1:B1');
+        ws.mergeCells('C1:D1');
 
         // 取得標題路徑
-        let titleCertification= ws.getCell('A1');
-        let titledescription = ws.getCell('B1');
+        let dayname = ws.getCell('A1');
+        let daydata = ws.getCell('C1')
+        let titleitem = ws.getCell('A2');
+        let titleoperation = ws.getCell('B2');
+        let titledpsobject = ws.getCell('C2');
+        let titlempsobject = ws.getCell('D2');
 
         // 設定標題文字
-        titleCertification.value = i18n.getText('att.cer.label4');
-        titledescription.value = i18n.getText('att.cer.label5');
+        dayname.value= i18n.getText('att.dps.label9');
+        daydata.value= oData.tableInfo[0].productDay;
+        titleitem.value = i18n.getText('att.dps.label2');
+        titleoperation.value = i18n.getText('att.dps.label3');
+        titledpsobject.value = i18n.getText('att.dps.label4');
+        titlempsobject.value = i18n.getText('att.dps.label5');
+
+        //第一列樣式
+        dayname.border = thin_border;
+        dayname.alignment = alignment;
+        daydata.border = thin_border;
+        daydata.alignment = alignment;
 
         // 設定標題欄位樣式
-        let colArray = [titleCertification, titledescription]
+        let colArray = [titleitem,titleoperation,titledpsobject,titlempsobject]
         colArray.forEach(item => {
           item.fill = fill.lightOrange
           item.border = thin_border
+          item.alignment = alignment;
         })
 
         // 新增 row 資料
         oData.tableInfo.forEach(item => {
-          ws.addRow([item.certification, item.description])
+          ws.addRow([item.item, item.operation,item.dpsobject,item.mpsobject])
         })
 
         // 每 row 樣式設定
@@ -252,7 +308,7 @@ sap.ui.define(
         });
 
         // 匯出 excel
-        doExport(oData.item + "_CERTIFICATION");
+        doExport(oData.item + "_CONFIGDPS");
 
         async function doExport(name) {
           const buffer = await wb.xlsx.writeBuffer();

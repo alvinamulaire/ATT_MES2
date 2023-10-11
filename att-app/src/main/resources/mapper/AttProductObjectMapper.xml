@@ -9,6 +9,7 @@
     <result column="MPS_OBJECT" jdbcType="DECIMAL" property="mpsObject" />
     <result column="CREATED_DATE_TIME" jdbcType="TIMESTAMP" property="createdDateTime" />
     <result column="MODIFIED_DATE_TIME" jdbcType="TIMESTAMP" property="modifiedDateTime" />
+    <result column="PRODUCT_DAY" jdbcType="VARCHAR" property="productDay" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    SITE, ITEM_BO, OPERATION_BO, DPS_OBJECT, MPS_OBJECT, CREATED_DATE_TIME, MODIFIED_DATE_TIME
+    SITE, ITEM_BO, OPERATION_BO, DPS_OBJECT, MPS_OBJECT, CREATED_DATE_TIME, MODIFIED_DATE_TIME, 
+    PRODUCT_DAY
   </sql>
   <select id="selectByExample" parameterType="com.att.repository.entity.AttProductObjectExample" resultMap="BaseResultMap">
     select
@@ -94,10 +96,10 @@
   <insert id="insert" parameterType="com.att.repository.entity.AttProductObject">
     insert into ATT_PRODUCT_OBJECT (SITE, ITEM_BO, OPERATION_BO, 
       DPS_OBJECT, MPS_OBJECT, CREATED_DATE_TIME, 
-      MODIFIED_DATE_TIME)
+      MODIFIED_DATE_TIME, PRODUCT_DAY)
     values (#{site,jdbcType=VARCHAR}, #{itemBo,jdbcType=VARCHAR}, #{operationBo,jdbcType=VARCHAR},
       #{dpsObject,jdbcType=DECIMAL}, #{mpsObject,jdbcType=DECIMAL}, #{createdDateTime,jdbcType=TIMESTAMP}, 
-      #{modifiedDateTime,jdbcType=TIMESTAMP})
+      #{modifiedDateTime,jdbcType=TIMESTAMP}, #{productDay,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.att.repository.entity.AttProductObject">
     insert into ATT_PRODUCT_OBJECT
@@ -123,6 +125,9 @@
       <if test="modifiedDateTime != null">
         MODIFIED_DATE_TIME,
       </if>
+      <if test="productDay != null">
+        PRODUCT_DAY,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="site != null">
@@ -145,6 +150,9 @@
       </if>
       <if test="modifiedDateTime != null">
         #{modifiedDateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productDay != null">
+        #{productDay,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,6 +186,9 @@
       <if test="record.modifiedDateTime != null">
         MODIFIED_DATE_TIME = #{record.modifiedDateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.productDay != null">
+        PRODUCT_DAY = #{record.productDay,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -191,7 +202,8 @@
       DPS_OBJECT = #{record.dpsObject,jdbcType=DECIMAL},
       MPS_OBJECT = #{record.mpsObject,jdbcType=DECIMAL},
       CREATED_DATE_TIME = #{record.createdDateTime,jdbcType=TIMESTAMP},
-      MODIFIED_DATE_TIME = #{record.modifiedDateTime,jdbcType=TIMESTAMP}
+      MODIFIED_DATE_TIME = #{record.modifiedDateTime,jdbcType=TIMESTAMP},
+      PRODUCT_DAY = #{record.productDay,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

@@ -1,10 +1,8 @@
 package com.att.repository.impl;
 
 import com.att.repository.AttDpsRepository;
-import com.att.repository.entity.AttDpsItemDesc;
-import com.att.repository.entity.AttDpsItemDescExample;
-import com.att.repository.entity.AttProductObject;
-import com.att.repository.entity.AttProductObjectExample;
+import com.att.repository.entity.*;
+import com.att.repository.mapper.AttDetaileMapper;
 import com.att.repository.mapper.AttDpsItemDescMapper;
 import com.att.repository.mapper.AttProductObjectMapper;
 import com.fw.mes.util.FwUtils;
@@ -22,23 +20,18 @@ public class AttDpsRepositoryImpl implements AttDpsRepository {
     @Autowired
     private AttDpsItemDescMapper attDpsItemDescMapper;
 
+    @Autowired
+    private AttDetaileMapper attDetaileMapper;
 
-//    @Override
-//    public List<Certification> getCerInfo(Certification certification) {
-//        CertificationExample example = new CertificationExample();
-//        CertificationExample.Criteria criteria = example.createCriteria();
-//
-//        criteria.andSiteEqualTo(certification.getSite());
-//        return certificationMapper.selectByExample(example);
-//    }
-//
-//    @Override
-//    public void deleteCertification(String certification) {
-//        CertificationExample example = new CertificationExample();
-//        example.createCriteria().andCertificationEqualTo(certification);
-//
-//        certificationMapper.deleteByExample(example);
-//    }
+    //取得
+    @Override
+    public List<AttDetaile> getDpsdetail(AttDetaile attDetaile) {
+        AttDetaileExample example = new AttDetaileExample();
+        AttDetaileExample.Criteria criteria = example.createCriteria();
+
+        criteria.andSiteEqualTo(attDetaile.getSite()).andItemEqualTo(attDetaile.getItem()).andProductDayEqualTo(attDetaile.getProductDay());
+        return attDetaileMapper.selectByExample(example);
+    }
 
     @Override
     public List<AttDpsItemDesc> getMaterialDesc(String site, String item, String locale) {
@@ -55,9 +48,9 @@ public class AttDpsRepositoryImpl implements AttDpsRepository {
     }
 
     @Override
-    public void deleteAttdps(String site, String item_bo, String operation_bo) {
+    public void deleteAttdps(String site, String item_bo,String productDay)  {
         AttProductObjectExample example = new AttProductObjectExample();
-        example.createCriteria().andSiteEqualTo(site).andItemBoEqualTo(item_bo).andOperationBoEqualTo(operation_bo);
+        example.createCriteria().andSiteEqualTo(site).andItemBoEqualTo(item_bo).andProductDayEqualTo(productDay);
         attProductObjectMapper.deleteByExample(example);
     }
 

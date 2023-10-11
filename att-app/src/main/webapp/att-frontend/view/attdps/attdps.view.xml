@@ -5,13 +5,15 @@
 	xmlns:t="sap.ui.table"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
-	xmlns:u="sap.ui.unified">
+	xmlns:u="sap.ui.unified"
+	displayBlock="true">
+
 	<Page class="sapUiSizeCompact">
 		<html:style>
 			.sapMPage>.sapMPageHeader + section{
 				top: 2.6rem
 			}
-			.certest.mycolums{
+			.mycolums{
 				font-weight: bold;
 			}
 		</html:style>
@@ -44,39 +46,51 @@
 						<Label text="{i18n>att.dps.label8}" class="set-required myLabel flex20" />
 						<Input id="item" width="30%" value="{/item}" liveChange="checkItem" showValueHelp="true" valueHelpRequest="openDialog" cd:title="g.material" cd:filterKey="item" cd:callBackKey="item" cd:columns="item|g.material;description|att.yieldMaintain.label10" cd:root="/" />
 					</FlexBox>
+					<FlexBox alignItems="Center" width="50%" renderType="Bare" >
+						<Label text="{i18n>att.dps.label9}" class="set-required myLabel flex20" />
+<!--						<Input id="productDay" width="30%" value="{/productDay}"  displayFormat="yyyy/MM/dd" valueFormat="yyyy/MM/dd"  />-->
+						<DateTimePicker width="25%" class="myInput" value="{/productDay}" change="dateCheck" displayFormat="yyyy/MM/dd" valueFormat="yyyy/MM/dd" />
+					</FlexBox >
 				</VBox>
 <!--				&lt;!&ndash; 表格資訊 &ndash;&gt;-->
 				<FlexBox width="100%" class="col-12 sapUiSmallMarginTop" renderType="Bare">
 
-					<t:Table id="table" width="30%" rows="{/tableInfo}" selectionMode="None" class="sapUiTinyMarginTop" enableGrouping="true">
+					<t:Table id="table" width="50%" rows="{/tableInfo}" selectionMode="None" class="sapUiTinyMarginTop" enableGrouping="true">
 
 						<t:columns>
 							<!-- 物料編號 -->
-							<t:Column hAlign="Center" width="8%" id="TableRouting" sortProperty="router" filterProperty="router">
+							<t:Column hAlign="Center" width="12%" >
 								<Label class="mycolums" text="{i18n>att.dps.label2}" />
 								<t:template>
 									<Text text="{item}" />
 								</t:template>
 							</t:Column>
 							<!-- 作業站點 -->
-							<t:Column hAlign="Center" width="8%">
+							<t:Column hAlign="Center" width="12%">
 								<Label class="mycolums" text="{i18n>att.dps.label3}" />
 								<t:template>
-									<Text text="{OPERATION}" />
+									<Text text="{operation}" />
 								</t:template>
 							</t:Column>
 							<!-- DPS目標 -->
-							<t:Column hAlign="Center" width="8%">
+							<t:Column hAlign="Center" width="12%">
 								<Label class="mycolums" text="{i18n>att.dps.label4}" />
 								<t:template>
-									<Text text="{DPSOBJECT}" />
+									<Text text="{dpsobject}" />
 								</t:template>
 							</t:Column>
 							<!-- MPS目標 -->
-							<t:Column hAlign="Center" width="8%">
+							<t:Column hAlign="Center" width="12%">
 								<Label class="mycolums" text="{i18n>att.dps.label5}" />
 								<t:template>
-									<Text text="{MPSOBJECT}" />
+									<Text text="{mpsobject}" />
+								</t:template>
+							</t:Column>
+							<!-- 生產日期 -->
+							<t:Column hAlign="Center" width="12%">
+								<Label class="mycolums" text="{i18n>att.dps.label9}" />
+								<t:template>
+									<Text text="{productDay}" />
 								</t:template>
 							</t:Column>
 						</t:columns>

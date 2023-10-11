@@ -19,6 +19,8 @@ public class AttProductObject implements Serializable {
 
     private Date modifiedDateTime;
 
+    private String productDay;
+
     private static final long serialVersionUID = 1L;
 
     public String getSite() {
@@ -75,5 +77,13 @@ public class AttProductObject implements Serializable {
 
     public void setModifiedDateTime(Date modifiedDateTime) {
         this.modifiedDateTime = modifiedDateTime;
+    }
+
+    public String getProductDay() {
+        return productDay;
+    }
+
+    public void setProductDay(String productDay) {
+        this.productDay = productDay;
     }
 }

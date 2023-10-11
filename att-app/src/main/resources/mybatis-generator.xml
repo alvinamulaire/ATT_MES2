@@ -45,7 +45,7 @@
 <!--       </table>-->
 
         <!-- !!! gen view 請使用下列這個，不產生 insert update delete 語句 !!! -->
-        <table tableName="ATT_DPS_ITEM_DESC"
+        <table tableName="ATT_DETAILE"
                  enableUpdateByExample="false" enableDeleteByExample="false"
                  enableInsert="false">
               <property name="modelOnly" value="false"/>
