@@ -124,8 +124,8 @@ sap.ui.define(
                         if (rowNumber > 2) {
                               // 判斷值是否為數字
                               let pDay = worksheet.getRow(1)
-                              for(let i=3 ;i<=60;i=i+2){
-                                let n=0
+                              let n=0
+                              for(let i=3 ;i<=66;i=i+2){
                                 if(!pDay.values[i]){
                                     break;
                                 }else

@@ -173,6 +173,11 @@
                     "name": "productionKanban",
                     "pattern": "productionKanban:?req:",
                     "target": "productionKanban"
+                },
+                {
+                    "name": "logUserSfcQty",
+                    "pattern": "logUserSfcQty:?req:",
+                    "target": "logUserSfcQty"
                 }
             ],
             "targets": {
@@ -238,6 +243,9 @@
                 },
                 "attdps": {
                     "viewName": "view.attdps.attdps"
+                },
+                "logUserSfcQty": {
+                    "viewName": "view.logUserSfcQty.logUserSfcQty"
                 },
                 "equipmentKanban": {
                     "viewName": "view.equipmentKanban.equipmentKanban",

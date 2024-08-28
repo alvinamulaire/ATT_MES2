@@ -1,0 +1,113 @@
+<mvc:View controllerName="att.view.logUserSfcQty.logUserSfcQty"
+		  xmlns="sap.m"
+		  xmlns:mvc="sap.ui.core.mvc"
+		  xmlns:core="sap.ui.core"
+		  xmlns:t="sap.ui.table"
+		  xmlns:html="http://www.w3.org/1999/xhtml"
+		  xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+		  xmlns:u="sap.ui.unified">
+	<Page class="sapUiSizeCompact">
+		<html:style>
+			.sapMPage>.sapMPageHeader + section{
+			top: 2.6rem
+			}
+		</html:style>
+
+		<customHeader>
+			<Bar class="title-midle">
+				<!-- 標題 -->
+				<contentMiddle>
+					<Title text="{i18n>logUserSfcQty.title}"/>
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<content>
+			<VBox>
+				<!-- 檢索條件 -->
+				<VBox >
+					<HBox>
+						<!-- 作業站點 -->
+						<FlexBox width="30%" height="32px" class="sapUiTinyMarginTopBottom" alignItems="Center" renderType="Bare">
+							<Label text="{i18n>g.operation}" class="set-required myLabel flex40" />
+							<Text text="{/operation}" class="myText" />
+						</FlexBox>
+						<!-- SFC -->
+						<FlexBox width="30%" height="32px" class="sapUiTinyMarginTopBottom" alignItems="Center" renderType="Bare">
+							<Label text="{i18n>g.sfc}" class="myLabel flex30" />
+							<Text text="{/sfc}" class="myText" />
+						</FlexBox>
+						<!-- 已回報數量 -->
+						<FlexBox width="40%" height="32px" class="sapUiTinyMarginTopBottom" alignItems="Center" renderType="Bare">
+							<Label text="{i18n>logUserSfcQty.label8}" class="myLabel flex30" />
+							<Text text="{/confirmedQty}" class="myText" />
+						</FlexBox>
+					</HBox>
+					<HBox>
+						<!-- 機台 -->
+						<FlexBox width="30%" height="32px" class="sapUiTinyMarginTopBottom" alignItems="Center" renderType="Bare">
+							<Label text="{i18n>logUserSfcQty.label1}" class="set-required myLabel flex40" />
+							<Text text="{/resource}" class="myText" />
+						</FlexBox>
+						<!-- 投入數量 -->
+						<FlexBox width="30%" height="32px" class="sapUiTinyMarginTopBottom" alignItems="Center" renderType="Bare">
+							<Label text="{i18n>logUserSfcQty.label2}" class="myLabel flex30" />
+							<Text text="{/sfcQty}" class="myText" />
+						</FlexBox>
+						<!-- 剩餘可回報數 -->
+						<FlexBox width="40%" height="32px" class="sapUiTinyMarginTopBottom" alignItems="Center" renderType="Bare">
+							<Label text="{i18n>logUserSfcQty.label9}" class="myLabel flex30" />
+							<Text text="{/canUseQty}" class="myText" />
+						</FlexBox>
+					</HBox>
+				</VBox>
+				<!-- 表格資訊 -->
+				<FlexBox width="100%" class="col-12 sapUiSmallMarginTop" renderType="Bare">
+
+					<t:Table id="table" width="100%" rows="{/table}" selectionMode="None" class="sapUiTinyMarginTop" enableGrouping="true">
+
+						<t:columns>
+							<!-- 工號 -->
+							<t:Column hAlign="Center">
+								<Label text="{i18n>logUserSfcQty.label3}" />
+								<t:template>
+									<Text text="{user}" />
+								</t:template>
+							</t:Column>
+							<!-- 姓名 -->
+							<t:Column hAlign="Center" >
+								<Label text="{i18n>logUserSfcQty.label4}" />
+								<t:template>
+									<Text text="{userName}" />
+								</t:template>
+							</t:Column>
+							<!-- 作業數量 -->
+							<t:Column hAlign="Center">
+								<Label text="{i18n>logUserSfcQty.label5}" />
+								<t:template>
+									<Input value="{qty}" type="Number"/>
+								</t:template>
+							</t:Column>
+							<!-- 不良數量 -->
+							<t:Column hAlign="Center">
+								<Label text="{i18n>logUserSfcQty.label6}" />
+								<t:template>
+									<Input value="{ngQty}" type="Number"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
+
+				</FlexBox>
+			</VBox>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<!-- 暫存數據 -->
+				<Button text="{i18n>logUserSfcQty.label7}"
+						press="save"></Button>
+				<ToolbarSpacer/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

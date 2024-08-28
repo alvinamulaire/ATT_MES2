@@ -134,13 +134,13 @@ sap.ui.define(
         } else if (!oData.newSn) {
           // 檢查是否填寫 更換SN
           this.error(i18n.getText("sn.warning7"))
-        } else if((oData.sn.substring(0,2)=="UP" && oData.newSn.substring(0,4) !="5703")&&(oData.sn.substring(0,2)=="UP" && oData.newSn.substring(0,4) !="2795")) {
+        } else if((oData.sn.substring(0,2)=="UP" && oData.newSn.substring(0,4) !="5703")&&(oData.sn.substring(0,2)=="UP" && oData.newSn.substring(0,4) !="2795")&&(oData.sn.substring(0,2)=="UP" && oData.newSn.substring(0,4) !="7483")) {
           this.error(i18n.getText("sn.warning8"))
-        } else if((oData.sn.substring(0,2)!="UP" && oData.newSn.substring(0,4) =="5703")&&(oData.sn.substring(0,2)!="UP" && oData.newSn.substring(0,4) =="2795")) {
+        } else if((oData.sn.substring(0,2)!="UP" && oData.newSn.substring(0,4) =="5703")&&(oData.sn.substring(0,2)!="UP" && oData.newSn.substring(0,4) =="2795")&&(oData.sn.substring(0,2)!="UP" && oData.newSn.substring(0,4) =="7483")) {
           this.error(i18n.getText("sn.warning8"))
-        } else if((oData.sn.substring(0,2)!="LO" && oData.newSn.substring(0,4) =="5704")&&(oData.sn.substring(0,2)!="LO" && oData.newSn.substring(0,4) =="2796")) {
+        } else if((oData.sn.substring(0,2)!="LO" && oData.newSn.substring(0,4) =="5704")&&(oData.sn.substring(0,2)!="LO" && oData.newSn.substring(0,4) =="2796")&&(oData.sn.substring(0,2)!="LO" && oData.newSn.substring(0,4) =="7484")) {
           this.error(i18n.getText("sn.warning9"))
-        } else if((oData.sn.substring(0,2)=="LO" && oData.newSn.substring(0,4) !="5704")&&(oData.sn.substring(0,2)=="LO" && oData.newSn.substring(0,4) !="2796")) {
+        } else if((oData.sn.substring(0,2)=="LO" && oData.newSn.substring(0,4) !="5704")&&(oData.sn.substring(0,2)=="LO" && oData.newSn.substring(0,4) !="2796")&&(oData.sn.substring(0,2)=="LO" && oData.newSn.substring(0,4) !="7484")) {
           this.error(i18n.getText("sn.warning9"))
         } else{
                 $sn.saveSN({
